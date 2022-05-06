@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
+import logger.Log;
 import looca.Sistema;
 
 /**
@@ -13,8 +14,12 @@ import looca.Sistema;
  * @author Matheus Mattos
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+    protected static Log log = null;
     public TelaPrincipal() {
+        log = new Log();
+        log.createDirectory();
+        log.createFile();
+        log.appendFile(TelaPrincipal.class.getName());
         initComponents();
         Sistema sistema = new Sistema();
         ControllerUsuario usuario = new ControllerUsuario();
